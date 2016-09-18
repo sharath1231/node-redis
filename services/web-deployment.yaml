@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: node-redis
+    tier: frontend
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: node-redis
+        tier: frontend
+    spec:
+      containers:
+      - name: node-redis
+        image: gcr.io/new-proj-141023/webapp:v1
+        ports:
+        - containerPort: 3000

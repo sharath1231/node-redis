@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: frontend
+  labels:
+    app: node-redis
+    tier: frontend
+spec:
+  scaleRef: 
+    kind: Deployment
+    name: frontend
+    subresource: scale
+  minReplicas: 1
+  maxReplicas: 10
+  cpuUtilization:
+    targetPercentage: 50
